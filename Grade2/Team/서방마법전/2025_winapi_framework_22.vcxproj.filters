@@ -1,0 +1,518 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Default">
+      <UniqueIdentifier>{22f51d16-9594-4296-95ce-1934cc52ac90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{fd0a4509-f4ee-4d93-b401-61533d716202}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\01. Core">
+      <UniqueIdentifier>{1ff30022-3258-49ba-a483-9cf87785f390}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\02. Manager">
+      <UniqueIdentifier>{6f5596e7-4532-4a4d-8890-46e6857eb97d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Object">
+      <UniqueIdentifier>{09d92c9a-13f9-4d1e-aa02-d4ee830e1420}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Scene">
+      <UniqueIdentifier>{b8adc403-a6a5-4873-82c0-1faca5887fed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\05. Resource">
+      <UniqueIdentifier>{ed8ee0bd-ee5a-4316-9c1b-bcf8650f2315}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\06. Component">
+      <UniqueIdentifier>{4d70ad19-6a7a-4c2c-ab61-d0375b041d62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. UI">
+      <UniqueIdentifier>{4b713974-f916-4d9b-ab8f-9590d01e4d5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\08. Module">
+      <UniqueIdentifier>{48fe1f28-e7e3-4a2c-9f06-649e289404fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\99. Headers">
+      <UniqueIdentifier>{9c79175f-d50d-42ff-89d7-1b1d459f4f93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\06. Component\Animation">
+      <UniqueIdentifier>{a9e988cb-adc6-4d67-84d1-9b50ef9a2f8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\06. Component\Physics">
+      <UniqueIdentifier>{099b472c-b9ea-4835-9579-a2730ed97b04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\02. Manager\Framework">
+      <UniqueIdentifier>{b4df280d-99d4-4098-9967-569d0836c34f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Object\Enemy">
+      <UniqueIdentifier>{b2075e89-f292-414b-a62e-6e2de91956e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Object\Enemy\Boss">
+      <UniqueIdentifier>{d8cfd052-9104-45bc-8edb-1ec4825105ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Object\Player">
+      <UniqueIdentifier>{18c90c66-cc2f-4459-af09-db51328f3d04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Object\Interface">
+      <UniqueIdentifier>{7a977107-d27e-4a79-8dd5-598a1dc855b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\09. Pattern">
+      <UniqueIdentifier>{605691e8-79d9-46ae-9e80-fafb35eb3489}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="2025_winapi_framework_22.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.h">
+      <Filter>Engine\01. Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Defines.h">
+      <Filter>Engine\99. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Engine\99. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseWindow.h">
+      <Filter>Engine\01. Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Engine\03. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Vec2.h">
+      <Filter>Engine\99. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Engine\04. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Enums.h">
+      <Filter>Engine\99. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Engine\02. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="DevScene.h">
+      <Filter>Engine\04. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene.h">
+      <Filter>Engine\04. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceBase.h">
+      <Filter>Engine\05. Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Engine\05. Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Engine\02. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Engine\06. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Engine\06. Component\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="GDISelector.h">
+      <Filter>Engine\08. Module</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>Engine\02. Manager\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Engine\02. Manager\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Engine\02. Manager\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Engine\06. Component\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Animator.h">
+      <Filter>Engine\06. Component\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Rigidbody.h">
+      <Filter>Engine\06. Component\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Engine\03. Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Health.h">
+      <Filter>Engine\06. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Engine\03. Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>Engine\03. Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="IDamageable.h">
+      <Filter>Engine\03. Object\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Engine\03. Object\Enemy\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>Engine\06. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Engine\06. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="IdleState.h">
+      <Filter>Engine\03. Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="TestEnemy.h">
+      <Filter>Engine\03. Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="BossMover.h">
+      <Filter>Engine\06. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyProjectile.h">
+      <Filter>Engine\03. Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="PatternCompo.h">
+      <Filter>Engine\06. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="PoolManager.h">
+      <Filter>Engine\02. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerAttackState.h">
+      <Filter>Engine\03. Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="BakBakDevScene.h">
+      <Filter>Engine\04. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyMovement.h">
+      <Filter>Engine\06. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemySpawnManger.h">
+      <Filter>Engine\02. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Pattern.h">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="CirclePattern.h">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerManager.h">
+      <Filter>Engine\02. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleToPlayerPattern.h">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="BossHPBar.h">
+      <Filter>Engine\07. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="IcicleFallPattern.h">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="DeleteBullet.h">
+      <Filter>Engine\03. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerDeadState.h" />
+    <ClInclude Include="PlayerHitState.h" />
+    <ClInclude Include="GateOfBabylonPattern.h">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="SpellNameText.h">
+      <Filter>Engine\07. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>Engine\03. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ExitButton.h">
+      <Filter>Engine\07. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>Engine\04. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Engine\07. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="StartButton.h">
+      <Filter>Engine\07. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonSelector.h">
+      <Filter>Engine\07. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="TripleShotEnemy.h">
+      <Filter>Engine\03. Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h" />
+    <ClInclude Include="PowerItem.h" />
+    <ClInclude Include="GameOverScene.h" />
+    <ClInclude Include="BombItem.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemDropCompo.h" />
+    <ClInclude Include="PureBulletHellPattern.h">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="SpiralPattern.h">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect.h">
+      <Filter>Engine\03. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="SecondMagicPattern.h">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletRenderManager.h" />
+    <ClInclude Include="ClearScene.h" />
+    <ClInclude Include="ShotToPlayerEnemy.h" />
+    <ClInclude Include="CircleMoveEnemy.h">
+      <Filter>Engine\03. Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiSpeedRadialPattern.h">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomEffect.h" />
+    <ClInclude Include="OneUpItem.h" />
+    <ClInclude Include="TitleBackground.h" />
+    <ClInclude Include="TripleCirclePattern.h">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerBoom.h" />
+    <ClInclude Include="SettingScene.h" />
+    <ClInclude Include="VolumeButton.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="2025_winapi_framework_22.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="2025_winapi_framework_22.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\Output\build\Resource\Texture\icon.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\Output\build\Resource\Texture\Gameicon.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Engine\01. Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core.cpp">
+      <Filter>Engine\01. Core</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseWindow.cpp">
+      <Filter>Engine\01. Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Engine\03. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Engine\04. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Engine\02. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="DevScene.cpp">
+      <Filter>Engine\04. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScene.cpp">
+      <Filter>Engine\04. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceBase.cpp">
+      <Filter>Engine\05. Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Engine\05. Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Engine\02. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Engine\06. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Engine\06. Component\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="GDISelector.cpp">
+      <Filter>Engine\08. Module</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>Engine\02. Manager\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Engine\02. Manager\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Engine\02. Manager\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Engine\06. Component\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Animator.cpp">
+      <Filter>Engine\06. Component\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigidbody.cpp">
+      <Filter>Engine\06. Component\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Engine\03. Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <Filter>Engine\06. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Engine\03. Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Engine\03. Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="IDamageable.cpp">
+      <Filter>Engine\03. Object\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>Engine\03. Object\Enemy\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="BossMover.cpp">
+      <Filter>Engine\06. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>Engine\06. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Engine\06. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="IdleState.cpp">
+      <Filter>Engine\03. Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveState.cpp">
+      <Filter>Engine\03. Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyProjectile.cpp">
+      <Filter>Engine\03. Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="PatternCompo.cpp">
+      <Filter>Engine\06. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="PoolManager.cpp">
+      <Filter>Engine\02. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerAttackState.cpp">
+      <Filter>Engine\03. Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="TestEnemy.cpp">
+      <Filter>Engine\03. Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="BakBakDevScene.cpp">
+      <Filter>Engine\04. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyMovement.cpp">
+      <Filter>Engine\06. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemySpawnManger.cpp">
+      <Filter>Engine\02. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Pattern.cpp">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="CirclePattern.cpp">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerManager.cpp">
+      <Filter>Engine\02. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleToPlayerPattern.cpp">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="BossHPBar.cpp">
+      <Filter>Engine\07. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="IcicleFallPattern.cpp">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="DeleteBullet.cpp">
+      <Filter>Engine\03. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerDeadState.cpp" />
+    <ClCompile Include="PlayerHitState.cpp" />
+    <ClCompile Include="GateOfBabylonPattern.cpp">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="SpellNameText.cpp">
+      <Filter>Engine\07. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>Engine\03. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ExitButton.cpp">
+      <Filter>Engine\07. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>Engine\04. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="TripleShotEnemy.cpp">
+      <Filter>Engine\03. Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Engine\07. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="StartButton.cpp">
+      <Filter>Engine\07. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonSelector.cpp">
+      <Filter>Engine\07. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="BombItem.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ItemDropCompo.cpp" />
+    <ClCompile Include="PureBulletHellPattern.cpp">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="SpiralPattern.cpp">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect.cpp">
+      <Filter>Engine\03. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="SecondMagicPattern.cpp">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerItem.cpp" />
+    <ClCompile Include="GameOverScene.cpp" />
+    <ClCompile Include="BulletRenderManager.cpp" />
+    <ClCompile Include="ClearScene.cpp" />
+    <ClCompile Include="ShotToPlayerEnemy.cpp" />
+    <ClCompile Include="CircleMoveEnemy.cpp">
+      <Filter>Engine\03. Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiSpeedRadialPattern.cpp">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomEffect.cpp" />
+    <ClCompile Include="OneUpItem.cpp" />
+    <ClCompile Include="TitleBackground.cpp" />
+    <ClCompile Include="TripleCirclePattern.cpp">
+      <Filter>Engine\09. Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerBoom.cpp">
+      <Filter>Engine\03. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingScene.cpp" />
+    <ClCompile Include="VolumeButton.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+</Project>
