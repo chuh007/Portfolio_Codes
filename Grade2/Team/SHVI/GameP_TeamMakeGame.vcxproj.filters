@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="01.Core">
+      <UniqueIdentifier>{b70c7a9c-022e-43b6-8d23-7fe07bc31051}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Manager">
+      <UniqueIdentifier>{3ff3a5f3-71f7-44e9-a4b5-eeb1302435f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Object">
+      <UniqueIdentifier>{51a0a043-addd-474e-a169-f3089482ed59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Scene">
+      <UniqueIdentifier>{07a8a30a-77ca-40cc-8dfa-985430ccf68f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.Resource">
+      <UniqueIdentifier>{d17a9adf-cd1d-4d2f-8df7-8e88d985fa05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06.Component">
+      <UniqueIdentifier>{15ee6f48-9533-40b1-ae80-d63bb89dfa7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07.Moudule">
+      <UniqueIdentifier>{85fb672c-af0d-4773-ac46-802a71bfb652}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.Headers">
+      <UniqueIdentifier>{c4a2dac4-df99-4cb9-b223-d0d3a816dfd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Object\Interface">
+      <UniqueIdentifier>{d067c820-cf4b-45f4-b959-610a7b6487fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07.Moudule\Command">
+      <UniqueIdentifier>{49da120a-ab9c-4eca-bdf9-cb2c47f6623e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>01.Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>04.Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Core.cpp">
+      <Filter>01.Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Console.cpp">
+      <Filter>07.Moudule</Filter>
+    </ClCompile>
+    <ClCompile Include="Mci.cpp">
+      <Filter>07.Moudule</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="IMovable.cpp">
+      <Filter>03.Object\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterObject.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ICommand.cpp">
+      <Filter>07.Moudule\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>07.Moudule\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveCommand.cpp">
+      <Filter>07.Moudule\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Muzzle.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="FireCommand.cpp">
+      <Filter>07.Moudule\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="IFireable.cpp">
+      <Filter>03.Object\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="MapManager.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyCollisionManager.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="UpgradeManager.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="FasterEnemy.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="FlipEnemy.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="InvisibleEnemy.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="InfoScene.cpp" />
+    <ClCompile Include="GameOverScene.cpp" />
+    <ClCompile Include="UpgradeCommand.cpp">
+      <Filter>07.Moudule\Command</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Console.h">
+      <Filter>07.Moudule</Filter>
+    </ClInclude>
+    <ClInclude Include="Mci.h">
+      <Filter>07.Moudule</Filter>
+    </ClInclude>
+    <ClInclude Include="Enums.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>03.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.h">
+      <Filter>01.Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>04.Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>03.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>02.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>03.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Position.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IMovable.h">
+      <Filter>03.Object\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterObject.h">
+      <Filter>03.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ICommand.h">
+      <Filter>07.Moudule\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>07.Moudule\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveCommand.h">
+      <Filter>07.Moudule\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Muzzle.h">
+      <Filter>03.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="FireCommand.h">
+      <Filter>07.Moudule\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyData.h" />
+    <ClInclude Include="IFireable.h">
+      <Filter>03.Object\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="MapManager.h">
+      <Filter>02.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>03.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>03.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyCollisionManager.h">
+      <Filter>02.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>02.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="UpgradeManager.h">
+      <Filter>02.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="FasterEnemy.h">
+      <Filter>03.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="FlipEnemy.h">
+      <Filter>03.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="InvisibleEnemy.h">
+      <Filter>03.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GameScene.h" />
+    <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="InfoScene.h" />
+    <ClInclude Include="GameOverScene.h" />
+    <ClInclude Include="UpgradeCommand.h">
+      <Filter>07.Moudule\Command</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+</Project>

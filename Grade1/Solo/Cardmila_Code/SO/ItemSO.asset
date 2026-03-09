@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842dfd11880fc6f41b46de7214795d28, type: 3}
+  m_Name: ItemSO
+  m_EditorClassIdentifier: 
+  item:
+  - cardName: "\uAD11\uD0C4"
+    cardText: "\uC801\uC5D0\uAC8C \uAD11\uD0C4\uC744 \uC3F4 3\uC758 \uD53C\uD574\uB97C
+      \uC785\uD799\uB2C8\uB2E4."
+    attack: 3
+    defence: 0
+    cost: 1
+    DrowCount: 0
+    image: {fileID: 21300000, guid: 2de2535e87a7b4547a46def47e32e8a8, type: 3}
+    count: 2
+    isattcak: 1
+  - cardName: "\uD654\uC5FC \uAE30\uB465"
+    cardText: "\uC9C0\uC815 \uC704\uCE58\uC5D0 \uBD88\uC758 \uAE30\uB465\uC744 \uC0DD\uC131\uD574
+      7\uC758 \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
+    attack: 7
+    defence: 0
+    cost: 2
+    DrowCount: 0
+    image: {fileID: 21300000, guid: 92b0110b74d0b8247be2320f893f5dd3, type: 3}
+    count: 2
+    isattcak: 1
+  - cardName: "\uBCF4\uB78F\uBE5B \uB099\uB8B0"
+    cardText: "\uC9C0\uC815 \uC704\uCE58\uC5D0 \uBC88\uAC1C\uB97C \uB5A8\uC5B4\uD2B8\uB824
+      12\uC758 \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
+    attack: 12
+    defence: 0
+    cost: 3
+    DrowCount: 0
+    image: {fileID: 21300000, guid: 28b162dab9aec7b43b70ccfacde6fb38, type: 3}
+    count: 2
+    isattcak: 1
+  - cardName: "\uAC00\uBCBC\uC6B4 \uBC29\uC5B4"
+    cardText: "\uAC00\uBCBC\uC6B4 \uBC29\uC5B4\uB9C9\uC744 \uC0DD\uC131\uD574 2\uC758
+      \uBC29\uC5B4\uB9C9\uC744 \uC5BB\uC2B5\uB2C8\uB2E4."
+    attack: 0
+    defence: 2
+    cost: 1
+    DrowCount: 0
+    image: {fileID: 21300000, guid: 5fc28a0b7fa29934a9c85711a9788caa, type: 3}
+    count: 2
+    isattcak: 0
+  - cardName: "\uBCF4\uD638\uB9C9 \uC804\uAC1C"
+    cardText: "\uBC29\uC5B4\uB9C9\uC744 \uC804\uAC1C\uD574 5\uC758 \uBCF4\uD638\uB9C9\uC744
+      \uC5BB\uC2B5\uB2C8\uB2E4."
+    attack: 0
+    defence: 5
+    cost: 2
+    DrowCount: 0
+    image: {fileID: 21300000, guid: 494dff7d464323943822038ad6d1e957, type: 3}
+    count: 2
+    isattcak: 0
+  - cardName: "\uACF5\uACA9\uACFC \uC218\uBE44"
+    cardText: "\uC801\uC5D0\uAC8C 3\uC758 \uD53C\uD574\uB97C \uC8FC\uBA74\uC11C \uBCF4\uD638\uB9C9\uC744
+      3 \uC5BB\uC2B5\uB2C8\uB2E4."
+    attack: 3
+    defence: 3
+    cost: 2
+    DrowCount: 0
+    image: {fileID: 21300000, guid: b1e12f004dcb62a4092a5417531708d0, type: 3}
+    count: 1
+    isattcak: 1
+  - cardName: "\uC815\uBE44"
+    cardText: "\uC815\uBE44 \uC2DC\uAC04\uC744 \uAC00\uC838 \uCE74\uB4DC\uB97C \uD55C\uC7A5
+      \uB354 \uBF51\uC744 \uC218 \uC788\uAC8C \uB429\uB2C8\uB2E4."
+    attack: 0
+    defence: 0
+    cost: 0
+    DrowCount: 1
+    image: {fileID: 21300000, guid: 722e694ff612fb74d82bf1720a60c862, type: 3}
+    count: 4
+    isattcak: 0
+  - cardName: "\uBB35\uC2DC\uB85D\uC758 4\uAE30\uC0AC"
+    cardText: "4\uAE30\uC0AC\uC758 \uD798\uC73C\uB85C \uC801\uC5D0\uAC8C 25\uC758
+      \uD53C\uD574\uB97C \uAC00\uD569\uB2C8\uB2E4."
+    attack: 25
+    defence: 0
+    cost: 4
+    DrowCount: 0
+    image: {fileID: 21300000, guid: c2e0a270359c7e44683345cd5bcbd118, type: 3}
+    count: 0
+    isattcak: 1
+  - cardName: "\uACF5\uACA9\uACFC \uC218\uBE44-\uACBD\uB7C9"
+    cardText: "\uC801\uC5D0\uAC8C 3\uC758 \uD53C\uD574\uB97C \uC8FC\uBA74\uC11C \uBCF4\uD638\uB9C9\uC744
+      2 \uC5BB\uC2B5\uB2C8\uB2E4.(\uB3D9\uC791\uC744 \uCD5C\uC801\uD654\uD574 \uC2DC\uC6A9\uD558\uB294
+      \uCF54\uC2A4\uD2B8\uAC00 \uAC10\uC18C\uD558\uC600\uC2B5\uB2C8\uB2E4.)"
+    attack: 3
+    defence: 2
+    cost: 1
+    DrowCount: 0
+    image: {fileID: 21300000, guid: b1e12f004dcb62a4092a5417531708d0, type: 3}
+    count: 0
+    isattcak: 1
+  - cardName: "\uCD08\uAC15\uB825 \uBCF4\uD638\uB9C9"
+    cardText: "\uB9E4\uC6B0 \uAC15\uB825\uD55C \uBCF4\uD638\uB9C9\uC744 \uC804\uAC1C\uD574
+      10\uC758 \uBCF4\uD638\uB9C9\uC744 \uC5BB\uC2B5\uB2C8\uB2E4."
+    attack: 0
+    defence: 10
+    cost: 3
+    DrowCount: 0
+    image: {fileID: 21300000, guid: 85ba62806b4855e45a61d53945b7fa4f, type: 3}
+    count: 0
+    isattcak: 0
+  - cardName: "\uC12C\uAD11"
+    cardText: "\uC801\uC5D0\uAC8C \uC12C\uAD11\uC744 \uC77C\uC73C\uCF1C 3\uC758 \uD53C\uD574\uB97C
+      \uAC00\uD569\uB2C8\uB2E4."
+    attack: 3
+    defence: 0
+    cost: 0
+    DrowCount: 0
+    image: {fileID: 21300000, guid: ac719a52980514a4290d9b478340f944, type: 3}
+    count: 0
+    isattcak: 1
+  - cardName: "\uC9D1\uC911"
+    cardText: "\uC9D1\uC911\uD574 \uCE74\uB4DC\uB97C 2\uC7A5 \uB4DC\uB85C\uC6B0 \uD560
+      \uC218 \uC788\uAC8C \uB429\uB2C8\uB2E4."
+    attack: 0
+    defence: 0
+    cost: 1
+    DrowCount: 2
+    image: {fileID: 21300000, guid: 722e694ff612fb74d82bf1720a60c862, type: 3}
+    count: 3
+    isattcak: 0
+  - cardName: "\uD134-all"
+    cardText: "\uCF54\uC2A4\uD2B8\uB97C \uB300\uB7C9 \uC18C\uBAA8\uD574 \uCE74\uB4DC\uB97C
+      5 \uBF51\uC2B5\uB2C8\uB2E4."
+    attack: 0
+    defence: 0
+    cost: 3
+    DrowCount: 5
+    image: {fileID: 21300000, guid: 722e694ff612fb74d82bf1720a60c862, type: 3}
+    count: 2
+    isattcak: 0
