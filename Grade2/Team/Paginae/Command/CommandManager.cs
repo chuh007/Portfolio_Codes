@@ -22,7 +22,6 @@ namespace Work.CUH.Code.Command
         private int _currentTurnCount = 0;
 
         [Header("Settings")]
-        [SerializeField] private int leftUndoCount;
         public UnityEvent ResetEvent;
         
         private Queue<BaseCommand> _executionCommands;
@@ -68,7 +67,7 @@ namespace Work.CUH.Code.Command
             
             if (_undoCommands.Count <= 0 || _currentTurnCount <= 0) return;
             if (!_undoCommands.Peek().CanExecute()) return;
-            // if (leftUndoCount <= 0) return;
+            
             bool undo = false;
             while (_undoCommands.Count > 0 && _undoCommands.Peek().Tick >= _currentTurnCount)
             {
@@ -77,10 +76,8 @@ namespace Work.CUH.Code.Command
             }
             if (undo)
             {
-                leftUndoCount--;
                 _currentTurnCount--;
                 BroAudio.Play(undoSound);
-                Bus<CommandCompleteEvent>.Raise(new CommandCompleteEvent());
                 Bus<TurnGetEvent>.Raise(new TurnGetEvent());
             }
         }
@@ -91,9 +88,6 @@ namespace Work.CUH.Code.Command
         public void TurnUse(TurnUseEvent evt)
         {
             _currentTurnCount++;
-            // ExecuteCommand();
-            Bus<CommandCompleteEvent>.Raise(new CommandCompleteEvent());
-            // ExecuteCommand();
         }
         
         private void ExecuteCommand()
@@ -111,7 +105,6 @@ namespace Work.CUH.Code.Command
         }
         
         // 커멘드를 넣는 작업
-        // 플레이어의 행동 커멘드는 TurnUse보다 먼저 들어와야 한다.
         private void HandleCommand(CommandEvent evt)
         {
             _executionCommands.Enqueue(evt.Command);
@@ -121,6 +114,7 @@ namespace Work.CUH.Code.Command
         {
             if (_executionCommands.Count > 0)
                 ExecuteCommand();
+            
             if (Keyboard.current.zKey.isPressed && Time.time > undoCooldown + _lastUndoTime && !_floorManager.IsBookTurned && !_playerCode.IsInputLocked) // 지금 넘어가는 중인지
             {
                 _lastUndoTime = Time.time;
@@ -134,7 +128,5 @@ namespace Work.CUH.Code.Command
                 BroAudio.Play(resetSound);
             }
         }
-        
-        
     }
 }
