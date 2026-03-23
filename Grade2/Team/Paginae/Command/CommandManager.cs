@@ -91,11 +91,11 @@ namespace Work.CUH.Code.Command
         public void TurnUse(TurnUseEvent evt)
         {
             _currentTurnCount++;
-            ExecuteCommand();
+            // ExecuteCommand();
             Bus<CommandCompleteEvent>.Raise(new CommandCompleteEvent());
-            ExecuteCommand();
+            // ExecuteCommand();
         }
-
+        
         private void ExecuteCommand()
         {
             while (_executionCommands.Count > 0)
@@ -119,12 +119,14 @@ namespace Work.CUH.Code.Command
 
         private void Update()
         {
+            if (_executionCommands.Count > 0)
+                ExecuteCommand();
             if (Keyboard.current.zKey.isPressed && Time.time > undoCooldown + _lastUndoTime && !_floorManager.IsBookTurned && !_playerCode.IsInputLocked) // 지금 넘어가는 중인지
             {
                 _lastUndoTime = Time.time;
                 Bus<UndoEvent>.Raise(new UndoEvent());
             }
-
+            
             if (Keyboard.current.rKey.wasPressedThisFrame && !_isReset)
             {
                 _isReset = true;

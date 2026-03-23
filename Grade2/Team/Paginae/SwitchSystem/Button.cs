@@ -1,4 +1,5 @@
-﻿using Ami.BroAudio;
+﻿using System;
+using Ami.BroAudio;
 using DG.Tweening;
 using UnityEngine;
 using Work.CIW.Code.Grid;
@@ -9,49 +10,17 @@ using Work.CUH.Code.GameEvents;
 
 namespace Work.CUH.Code.SwitchSystem
 {
-    public class Button : GridObjectBase, ICommandable, ISwitch
+    public class Button : BaseSwitch, ICommandable, ISwitch
     {
-        #region Grid
-        public override Vector3Int CurrentGridPosition { get; set; }
-        public override void OnCellDeoccupied()
-        {
-        }
-
-        public override void OnCellOccupied(Vector3Int newPos)
-        {
-        }
-        
-        #endregion
-
         [SerializeField] private GameObject visual;
-        [field: SerializeField] public ColorLinkObject linkObject { get; private set; }
-
-        [Header("Target")]
-        [SerializeField] private GameObject operateObject;
-        [Header("Sound Setting")]
-        [SerializeField] private SoundID btnSound;
-        
-        public IActivatable activatable { get; private set; }
-        
-        public GameObject activeObject
-        {
-            get => operateObject;
-            private set
-            {
-                if (operateObject.TryGetComponent(out IActivatable activate))
-                {
-                    operateObject = value;
-                    activatable = activate;
-                }
-            }
-        }
         
         private bool _isActive;
         private GameObject _upObject;
-        public bool IsActive
+        
+        public override bool IsActive
         {
             get => _isActive;
-            private set
+            protected set
             {
                 _isActive = value;
                 if (_isActive)
@@ -67,12 +36,6 @@ namespace Work.CUH.Code.SwitchSystem
             }
         }
         
-        private void Awake()
-        {
-            activatable = operateObject.GetComponent<IActivatable>();
-            Bus<CommandCompleteEvent>.OnEvent += HandleCommandCompleted;
-        }
-        
         private void Start()
         {
             CurrentGridPosition = Vector3Int.RoundToInt(transform.position);
@@ -80,13 +43,8 @@ namespace Work.CUH.Code.SwitchSystem
             Debug.Assert(linkObject != null, $"linker can not be null");
             linkObject.SetLinkColor(activatable.linker.GetLinkColor());
         }
-
-        private void OnDestroy()
-        {
-            Bus<CommandCompleteEvent>.OnEvent -= HandleCommandCompleted;
-        }
-
-        private void HandleCommandCompleted(CommandCompleteEvent evt)
+        
+        private void Update()
         {
             var cell = GridSystem.Instance.GetCell(CurrentGridPosition);
             if (cell.Occupant && !IsActive)
@@ -98,31 +56,5 @@ namespace Work.CUH.Code.SwitchSystem
                 Bus<CommandEvent>.Raise(new CommandEvent(new SwitchCommand(this)));
             }
         }
-        
-        public void ToggleSwitch()
-        {
-            IsActive = !IsActive;
-            BroAudio.Play(btnSound);
-        }
-
-        public void UndoSwitch()
-        {
-            IsActive = !IsActive;
-        }
-        
-#if UNITY_EDITOR
-        private void OnValidate()
-        {
-            if(operateObject == null) return;
-            if (operateObject.TryGetComponent(out IActivatable activate))
-            {
-                activeObject = operateObject;
-            }
-            else
-            {
-                operateObject = null;
-            }
-        }
-#endif
     }
 }

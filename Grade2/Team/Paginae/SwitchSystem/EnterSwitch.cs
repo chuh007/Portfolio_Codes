@@ -7,41 +7,19 @@ using Work.CUH.Code.GameEvents;
 
 namespace Work.CUH.Code.SwitchSystem
 {
-    public class Switch : GridObjectBase, ICommandable, ISwitch
+    public class EnterSwitch : BaseSwitch, ICommandable
     {
         [SerializeField] private GameObject onVisual;
         [SerializeField] private GameObject offVisual;
-        [field: SerializeField] public ColorLinkObject linkObject { get; private set; }
         [SerializeField] private ParticleSystem onSwitchParticle;
         [SerializeField] private ParticleSystem offSwitchParticle;
         
-        [Header("Target")]
-        [SerializeField] private GameObject operateObject;
-        
-        [Header("Sound Setting")]
-        [SerializeField] private SoundID switchSound;
-        
-        public IActivatable activatable { get; private set; }
-        
-        public GameObject activeObject
-        {
-            get => operateObject;
-            private set
-            {
-                if (operateObject.TryGetComponent(out IActivatable activate))
-                {
-                    operateObject = value;
-                    activatable = activate;
-                }
-            }
-        }
-        
         private bool _isActive;
         
-        public bool IsActive
+        public override bool IsActive
         {
             get => _isActive;
-            private set
+            protected set
             {
                 _isActive = value;
                 if (_isActive)
@@ -65,9 +43,9 @@ namespace Work.CUH.Code.SwitchSystem
             offSwitchParticle.gameObject.SetActive(!isActive);
         }
         
-        private void Awake()
+        protected override void Awake()
         {
-            activatable = operateObject.GetComponent<IActivatable>();
+            base.Awake();
             Bus<PlayerPosChangeEvent>.OnEvent += HandlePlayerPosChange;
         }
 
@@ -89,45 +67,5 @@ namespace Work.CUH.Code.SwitchSystem
                 Bus<CommandEvent>.Raise(new CommandEvent(new SwitchCommand(this)));
             }
         }
-        
-        [ContextMenu("Activate")]
-        public void ToggleSwitch()
-        {
-            IsActive = !IsActive;
-            BroAudio.Play(switchSound);
-        }
-
-        public void UndoSwitch()
-        {
-            IsActive = !IsActive;
-        }
-        
-        #region Grid
-        
-        public override Vector3Int CurrentGridPosition { get; set; }
-        public override void OnCellDeoccupied()
-        {
-        }
-
-        public override void OnCellOccupied(Vector3Int newPos)
-        {
-        }
-        
-        #endregion
-
-#if UNITY_EDITOR
-        private void OnValidate()
-        {
-            if(operateObject == null) return;
-            if (operateObject.TryGetComponent(out IActivatable activate))
-            {
-                activeObject = operateObject;
-            }
-            else
-            {
-                operateObject = null;
-            }
-        }
-#endif
     }
 }
