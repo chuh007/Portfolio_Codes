@@ -10,7 +10,7 @@ using Work.CUH.Code.GameEvents;
 
 namespace Work.CUH.Code.SwitchSystem
 {
-    public class Button : BaseSwitch, ICommandable, ISwitch
+    public class Button : BaseSwitch, ICommandable
     {
         [SerializeField] private GameObject visual;
         
