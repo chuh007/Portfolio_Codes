@@ -8,7 +8,7 @@ namespace Code.MainSystem.Song.UI
     public class CustomDropdown : TMP_Dropdown
     {
         [Header("Item Colors")]
-        [SerializeField] private Color _enabledColor = new Color(0.584f, 0.706f, 0.804f, 1f);
+        [SerializeField] private Color _enabledColor = new Color(1.0f, 1.0f, 1.0f, 1f);
         [SerializeField] private Color _disabledColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
 
         private List<int> _disabledIndices = new List<int>();
