@@ -6,19 +6,19 @@ namespace _01Scripts.Players.States.UIInputStates
     public abstract class UIInputState : EntityState
     {
         protected Player _player;
-        protected PlayerUIInoutComponent PlayerUIInoutComponent;
+        protected PlayerUIInputComponent PlayerUIInputComponent;
 
         
         public UIInputState(Entity entity, int animationHash) : base(entity, animationHash)
         {
             _player = entity as Player;
-            PlayerUIInoutComponent = entity.GetCompo<PlayerUIInoutComponent>();
+            PlayerUIInputComponent = entity.GetCompo<PlayerUIInputComponent>();
         }
 
         public override void Reset()
         {
             base.Reset();
-            PlayerUIInoutComponent = _player.GetCompo<PlayerUIInoutComponent>();
+            PlayerUIInputComponent = _player.GetCompo<PlayerUIInputComponent>();
         }
 
         public override void Enter()

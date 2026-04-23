@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _01Scripts.Players
 {
-    public class PlayerUIInoutComponent : MonoBehaviour, IEntityComponent
+    public class PlayerUIInputComponent : MonoBehaviour, IEntityComponent
     {
         [SerializeField] private GameEventChannelSO cameraChannel;
         [SerializeField] private GameEventChannelSO playerChannel;
