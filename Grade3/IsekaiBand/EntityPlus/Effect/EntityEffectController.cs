@@ -11,35 +11,28 @@ namespace _Work.CHUH.Code.EntityPlus.Effect
     public class EntityEffectController : MonoBehaviour, IEntityComponent, IEffectHandler
     {
         private Entity _entity;
-        private readonly List<EntityEffect> _effects = new();
-        private bool _isClearing;
-
-        public Entity Owner => _entity;
-        public IReadOnlyList<EntityEffect> ActiveEffects => _effects;
+        private List<EntityEffect> _effects;
+        private List<EntityEffect> _toRemove;   
         
         public void Initialize(Entity entity)
         {
-            if (_entity != null)
-                _entity.OnDead.RemoveListener(HandleDeath);
-            ClearEffects();
+            _effects = new List<EntityEffect>();
+            _toRemove = new List<EntityEffect>();
             _entity = entity;
-            _entity.OnDead.AddListener(HandleDeath);
         }
 
         private void Update()
         {
-            int i = 0;
-            while (i < _effects.Count)
+            for (int i = 0; i < _effects.Count; i++)
             {
-                EntityEffect effect = _effects[i];
-                effect.UpdateEffect();
-                // 틱 피해로 사망하면 콜백 안에서 목록이 비워질 수 있다.
-                if (i >= _effects.Count || _effects[i] != effect) continue;
-                if (effect.IsExpired)
-                    RemoveEffectInternal(effect);
-                else
-                    i++;
+                _effects[i].UpdateEffect();
+                if (_effects[i].IsExpired)
+                    _toRemove.Add(_effects[i]);
             }
+
+            for (int i = 0; i < _toRemove.Count; i++)
+                RemoveEffectInternal(_toRemove[i]);
+            _toRemove.Clear();
         }
 
         public void AddEffect(AbstractEffectDataSO effectData)
@@ -49,16 +42,6 @@ namespace _Work.CHUH.Code.EntityPlus.Effect
 
         public void AddEffect(AbstractEffectDataSO effectData, Entity source)
         {
-            if (effectData == null || _entity == null || _entity.IsDead || _isClearing) return;
-            AddEffect(effectData.CreateEffect(_entity, source));
-        }
-
-        public void AddEffect(EntityEffect effect)
-        {
-            if (effect == null || effect.EffectTarget != _entity || _entity == null
-                || _entity.IsDead || _isClearing || effect.IsExpired) return;
-
-            AbstractEffectDataSO effectData = effect.EffectData;
             EntityEffect existing = FindEffect(effectData);
 
             if (existing != null)
@@ -69,8 +52,12 @@ namespace _Work.CHUH.Code.EntityPlus.Effect
                         return;
 
                     case StackPolicy.Refresh:
+                        existing.RefreshDuration();
+                        return;
+
                     case StackPolicy.Stack:
-                        existing.RefreshFrom(effect);
+                        existing.RefreshDuration();
+                        existing.AddStack(1);
                         return;
 
                     case StackPolicy.Independent:
@@ -78,47 +65,19 @@ namespace _Work.CHUH.Code.EntityPlus.Effect
                 }
             }
 
-            _effects.Add(effect);
-            effect.Activate();
+            EntityEffect newEffect = new EntityEffect(effectData, _entity, source);
+            _effects.Add(newEffect);
+
+            if (effectData is IDurationEffect durationEffect)
+                durationEffect.ActiveEffect(_entity);
         }
         
         private void RemoveEffectInternal(EntityEffect entityEffect)
         {
-            if (_effects.Remove(entityEffect))
-                entityEffect.Deactivate();
-        }
+            if (entityEffect.EffectData is IDurationEffect durationEffect)
+                durationEffect.UnActiveEffect(_entity);   
 
-        public void ClearEffects(bool targetDied = false)
-        {
-            if (_isClearing) return;
-            _isClearing = true;
-            using var lease = UnityEngine.Pool.ListPool<EntityEffect>.Get(out var effects);
-            effects.AddRange(_effects);
-            _effects.Clear();
-            try
-            {
-                foreach (EntityEffect effect in effects)
-                {
-                    if (targetDied && !effect.IsExpired)
-                        effect.OnTargetDeath();
-                    effect.Deactivate();
-                }
-            }
-            finally
-            {
-                _isClearing = false;
-            }
-        }
-
-        private void HandleDeath() => ClearEffects(true);
-
-        private void OnDisable() => ClearEffects(_entity != null && _entity.IsDead);
-
-        private void OnDestroy()
-        {
-            if (_entity != null)
-                _entity.OnDead.RemoveListener(HandleDeath);
-            ClearEffects();
+            _effects.Remove(entityEffect);
         }
 
         public void RemoveEffect(AbstractEffectDataSO effectData)
@@ -160,10 +119,20 @@ namespace _Work.CHUH.Code.EntityPlus.Effect
         
         private EntityEffect FindEffect(AbstractEffectDataSO data)
         {
-            if (data == null) return null;
+            // effectId가 있으면 id 비교, 없으면 SO 참조 비교
+            bool useId = !string.IsNullOrEmpty(data.effectId);
+
             for (int i = 0; i < _effects.Count; i++)
             {
-                if (!_effects[i].IsExpired && _effects[i].Matches(data)) return _effects[i];
+                AbstractEffectDataSO d = _effects[i].EffectData;
+                if (useId)
+                {
+                    if (d.effectId == data.effectId) return _effects[i];
+                }
+                else
+                {
+                    if (d == data) return _effects[i];
+                }
             }
             return null;
         }
@@ -171,7 +140,7 @@ namespace _Work.CHUH.Code.EntityPlus.Effect
         private EntityEffect FindEffectById(string effectId)
         {
             for (int i = 0; i < _effects.Count; i++)
-                if (!_effects[i].IsExpired && _effects[i].EffectData.effectId == effectId) return _effects[i];
+                if (_effects[i].EffectData.effectId == effectId) return _effects[i];
             return null;
         }
     }

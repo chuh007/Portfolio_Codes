@@ -7,14 +7,6 @@ using Work.CHUH.Chuh007Lib.ObjectPool.RunTime;
 
 namespace _Work.CHUH.Code.Combat.Warning
 {
-    public enum WarningType
-    {
-        Circle,
-        CircularSector,
-        HoleCircle,
-        Square
-    }
-    
     // 경고 어케만들지
     // 범위 타입이 있을만한게 사각형, 원, 부채꼴에 속 빈 원 정도인가 Ray쏴서 하는거도 있긴한데 본질적으로 사각형과 비슷
     // 경고가 지속될 시간, 범위 어케깔지, 회전,
@@ -41,7 +33,7 @@ namespace _Work.CHUH.Code.Combat.Warning
                 while (elapsed < duration)
                 {
                     if (this == null || ct.IsCancellationRequested) break;
-
+                    
                     SetFillProgress(Mathf.Clamp01(elapsed / duration));
                     elapsed += Time.deltaTime;
                     await UniTask.Yield(PlayerLoopTiming.Update, ct).SuppressCancellationThrow();

@@ -1,8 +1,6 @@
 ﻿using System;
 using _Code.LCH._02.Scripts.Combat;
 using _Code.LCH._02.Scripts.Level;
-using _Code.LCH._02.Scripts.Player;
-using _Code.LCH._02.Scripts.Card.Build;
 using _Work.CHUH.Code.Combat;
 using _Work.CHUH.Code.Core;
 using _Work.CHUH.Code.Core.Events;
@@ -166,7 +164,7 @@ namespace _Work.CHUH.Code.Enemies
             }
         }
 
-        public bool IsSlowed => _slowRemaining > 0f || (_entityMover != null && _entityMover.HasSlowEffect);
+        public bool IsSlowed => _slowRemaining > 0f;
 
         public void ApplySlow(float multiplier, float duration)
         {
@@ -180,20 +178,6 @@ namespace _Work.CHUH.Code.Enemies
             _entityMover?.SetMoveSpeedMultiplier(_slowMultiplier);
         }
 
-        public override void TakeDamage(DamageData damage, Vector2 direction = default, Entity dealer = null)
-        {
-            PlayerCommonBuildCompo sourceBuilds = null;
-            if (dealer != null)
-                dealer.TryGetComponent(out sourceBuilds);
-            if (!damage.IsFixedDamage)
-            {
-                damage.Damage *= CommonBuildDebuffApplier.GetIncomingDamageMultiplier(
-                    GetCompo<EntityEffectController>(), sourceBuilds);
-            }
-
-            base.TakeDamage(damage, direction, dealer);
-        }
-        
         protected override void HandleDead()
         {
             if(IsDead) return;
@@ -287,7 +271,6 @@ namespace _Work.CHUH.Code.Enemies
         
         public virtual void ResetItem()
         {
-            GetCompo<EntityEffectController>()?.ClearEffects();
             _poolLifecycleVersion++;
             _knockbackVersion++;
             _activeKnockbackVersion = 0;
@@ -306,6 +289,7 @@ namespace _Work.CHUH.Code.Enemies
                 _mover.CanManualMove = true;
             _renderer.SetAlpha(1);
             GetCompo<EntityStat>()?.ResetPooledStats();
+            GetCompo<EntityEffectController>()?.Initialize(this);
             AfterInitialize(); // TODO 수정
         }
 

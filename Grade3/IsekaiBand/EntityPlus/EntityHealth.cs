@@ -15,6 +15,7 @@ namespace _Work.CHUH.Code.EntityPlus
 {
     public class EntityHealth : MonoBehaviour, IEntityComponent, IAfterInitalize, IHealth
     {
+        private const string DamageReceivedMultiplierStatName = "damageReceivedMultiplier";
         private const float EnemyHitVolumeMultiplier = 0.5f;
         private const float EnemyHitPitchMultiplier = 3f;
         private const float EnemyHitSoundInterval = 0.05f;
@@ -138,7 +139,10 @@ namespace _Work.CHUH.Code.EntityPlus
             float typeMultiplier = !isFixedDamage && _damageTypeMultiplier != null
                 ? _damageTypeMultiplier.GetMultiplier(damageType)
                 : 1f;
-            float multipliedDamage = damage * typeMultiplier;
+            float receivedMultiplier = !isFixedDamage
+                ? _statCompo?.GetValueByName(DamageReceivedMultiplierStatName) ?? 1f
+                : 1f;
+            float multipliedDamage = damage * typeMultiplier * receivedMultiplier;
             float defense = ignoreDefense || isFixedDamage ? 0f : _currentDefense;
             float finalDamage = isFixedDamage
                 ? Mathf.Max(0f, damage)

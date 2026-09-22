@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 
-using Chuh007Lib.Entities.Entities;
-
 namespace _Work.CHUH.Code.EntityPlus.Effect.EffectData
 {
     public abstract class AbstractEffectDataSO : ScriptableObject
@@ -14,11 +12,6 @@ namespace _Work.CHUH.Code.EntityPlus.Effect.EffectData
         // Stack 설정
         public StackPolicy stackPolicy = StackPolicy.Refresh;
         public int maxStack = 1;
-
-        public virtual EntityEffect CreateEffect(Entity target, Entity source = null)
-        {
-            return new EntityEffect(this, target, source);
-        }
     }
 
     public enum StackPolicy

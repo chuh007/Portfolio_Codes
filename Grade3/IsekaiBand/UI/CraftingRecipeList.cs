@@ -1,85 +1,91 @@
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using _Code.LCH._02.Scripts.Player.WeaponStyle;
 using _Work.CHUH.Code.WeaponCombine;
 using UnityEngine.UIElements;
-using static _Work.CHUH.Code.UI.CraftingViewElements;
 
 namespace _Work.CHUH.Code.UI
 {
-    internal sealed class CraftingRecipeList
+    internal class CraftingRecipeList
     {
-        private readonly CraftingBuildContext _context;
-        private readonly Action<CombineMakeDataSO> _load;
+        private readonly Func<CombineWeaponType, string> _getName;
+        private readonly Action<VisualElement, WeaponType> _applyIcon;
 
-        public CraftingRecipeList(CraftingBuildContext context, Action<CombineMakeDataSO> load)
+        public CraftingRecipeList(Func<CombineWeaponType, string> getName,
+            Action<VisualElement, WeaponType> applyIcon)
         {
-            _context = context;
-            _load = load;
+            _getName = getName;
+            _applyIcon = applyIcon;
         }
 
-        public void Populate(ScrollView list, bool compact)
+        public void Populate(ScrollView recipeList, Func<IReadOnlyList<CombineMakeDataSO>> getRecipes)
         {
-            list.Clear();
-            var controller = _context.Combinations;
-            if (controller == null || controller.GetAllCombinations() == null)
+            recipeList.Clear();
+
+            IReadOnlyList<CombineMakeDataSO> recipes = getRecipes();
+            int recipeCount = 0;
+            if (recipes != null)
             {
-                Text(list, "등록된 레시피가 없습니다.", "empty-message");
-                return;
+                foreach (CombineMakeDataSO recipe in recipes)
+                {
+                    if (recipe == null) continue;
+
+                    recipeList.Add(CreateRecipeEntry(recipe));
+                    recipeCount++;
+                }
             }
 
-            var recipes = controller.GetAllCombinations().Where(recipe => recipe != null)
-                .OrderBy(recipe => controller.HasCombinedWeapon(recipe.combineWeapon) ? 2 :
-                    controller.CanCombine(recipe) ? 0 : 1)
-                .ThenByDescending(ReadyCount)
-                .ThenBy(recipe => recipe.needWeapons != null ? recipe.needWeapons.Count : 0);
-            int count = 0;
-            foreach (CombineMakeDataSO recipe in recipes)
-            {
-                AddRecipe(list, recipe, compact);
-                count++;
-            }
-            if (count == 0) Text(list, "등록된 레시피가 없습니다.", "empty-message");
+            if (recipeCount > 0) return;
+
+            var emptyLabel = new Label("등록된 레시피가 없습니다.");
+            emptyLabel.AddToClassList("recipe-empty-label");
+            recipeList.Add(emptyLabel);
         }
 
-        private int ReadyCount(CombineMakeDataSO recipe)
-            => recipe.needWeapons != null ? recipe.needWeapons.Count(_context.IsComplete) : 0;
-
-        private void AddRecipe(ScrollView list, CombineMakeDataSO recipe, bool compact)
+        private VisualElement CreateRecipeEntry(CombineMakeDataSO recipe)
         {
-            bool owned = _context.Combinations.HasCombinedWeapon(recipe.combineWeapon);
-            bool ready = _context.Combinations.CanCombine(recipe);
-            VisualElement entry = Box(list, "recipe-entry");
-            entry.EnableInClassList("recipe-entry--ready", ready);
-            VisualElement heading = Box(entry, "recipe-entry-header");
-            Text(heading, BandName(recipe.combineWeapon), "recipe-entry-name");
-            Text(heading, owned ? "보유 중" : ready ? "조합 가능" :
-                $"준비 {ReadyCount(recipe)}/{recipe.needWeapons?.Count ?? 0}", "recipe-state");
-            VisualElement ingredients = Box(entry, "recipe-ingredients");
+            var entry = new VisualElement();
+            entry.AddToClassList("recipe-entry");
+
+            var nameLabel = new Label(_getName(recipe.combineWeapon));
+            nameLabel.AddToClassList("recipe-entry-name");
+            entry.Add(nameLabel);
+
+            var ingredients = new VisualElement();
+            ingredients.AddToClassList("recipe-ingredients");
             if (recipe.needWeapons != null)
-                foreach (WeaponType type in recipe.needWeapons)
-                    AddIngredient(ingredients, type, owned);
+            {
+                foreach (WeaponType weaponType in recipe.needWeapons)
+                    ingredients.Add(CreateRecipeIngredient(weaponType));
+            }
+            entry.Add(ingredients);
 
-            if (!compact && !string.IsNullOrWhiteSpace(recipe.description))
-                Text(entry, recipe.description, "recipe-entry-desc");
-            if (!ready) return;
-            var button = new Button(() => _load(recipe)) { text = "재료 한 번에 담기" };
-            button.AddToClassList("quiet-button");
-            button.AddToClassList("recipe-load-button");
-            entry.Add(button);
+            if (!string.IsNullOrWhiteSpace(recipe.description))
+            {
+                var descriptionLabel = new Label(recipe.description);
+                descriptionLabel.AddToClassList("recipe-entry-desc");
+                entry.Add(descriptionLabel);
+            }
+
+            return entry;
         }
 
-        private void AddIngredient(VisualElement parent, WeaponType type, bool combined)
+        private VisualElement CreateRecipeIngredient(WeaponType weaponType)
         {
-            VisualElement ingredient = Box(parent, "recipe-ingredient");
-            bool ready = _context.IsComplete(type);
-            ingredient.EnableInClassList("recipe-ingredient--ready", ready);
-            _context.ApplyIcon(Box(ingredient, "recipe-ingredient-icon"), type);
-            string status = combined ? "조합 완료" : ready ? "완료" :
-                _context.Owns(type) ? $"{_context.PartCount(type)}/{InstrumentPartRules.RequiredPartCount}" :
-                _context.InstrumentState(type);
-            Text(ingredient, $"{InstrumentPartRules.GetInstrumentDisplayName(type)} · {status}",
-                "recipe-ingredient-name");
+            var ingredient = new VisualElement();
+            ingredient.AddToClassList("recipe-ingredient");
+
+            var icon = new VisualElement();
+            icon.AddToClassList("recipe-ingredient-icon");
+            _applyIcon(icon, weaponType);
+            ingredient.Add(icon);
+
+            var nameLabel = new Label(InstrumentPartRules.GetInstrumentDisplayName(weaponType));
+            nameLabel.AddToClassList("recipe-ingredient-name");
+            ingredient.Add(nameLabel);
+
+            return ingredient;
         }
+
     }
 }
